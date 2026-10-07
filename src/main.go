@@ -4,11 +4,43 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 )
 
 var inputReader = bufio.NewReader(os.Stdin)
+
+func assetRoot() string {
+	candidates := []string{
+		filepath.Join("src", "asset valide"),
+		filepath.Join("asset valide"),
+		filepath.Join("doc", "asset valide"),
+	}
+
+	if wd, err := os.Getwd(); err == nil {
+		for _, candidate := range []string{"src/asset valide", "asset valide", "doc/asset valide"} {
+			for _, dir := range []string{wd, filepath.Dir(wd)} {
+				fullPath := filepath.Join(dir, candidate)
+				if _, err := os.Stat(fullPath); err == nil {
+					return fullPath
+				}
+			}
+		}
+	}
+
+	for _, candidate := range candidates {
+		if _, err := os.Stat(candidate); err == nil {
+			return candidate
+		}
+	}
+
+	return filepath.Join("asset valide")
+}
+
+func assetPath(parts ...string) string {
+	return filepath.Join(append([]string{assetRoot()}, parts...)...)
+}
 
 func initCharacter(nom string, classe string, niveau int, pvTotal int, pvActuelle int, inventaire []Object, money int) Character {
 	return Character{
@@ -307,5 +339,5 @@ func openGang(perso *Character) {
 }
 
 func main() {
-	game()
+	Cli()
 }

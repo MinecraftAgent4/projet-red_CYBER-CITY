@@ -103,7 +103,7 @@ type PlayerAnimations struct {
 }
 
 func initPlayerAnimations(classe string) PlayerAnimations {
-	folder := filepath.Join("asset valide", classe)
+	folder := assetPath(classe)
 
 	var prefix string
 	switch classe {
@@ -165,7 +165,7 @@ func (p *PlayerAnimations) Unload() {
 
 // initPNJAnimations charge les sprites Idle des trois PNJ de la carte.
 func initPNJAnimations() map[string]*Animation {
-	base := "asset valide"
+	base := assetRoot()
 	return map[string]*Animation{
 		"MARCHAND":       NewAnimation(filepath.Join(base, "marchand", "Idle.png"), 48, 48, 4, 0.25),
 		"CHARCUDOC":      NewAnimation(filepath.Join(base, "charcudoc", "Idle.png"), 48, 48, 6, 0.25),

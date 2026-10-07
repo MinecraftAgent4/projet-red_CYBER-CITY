@@ -21,7 +21,7 @@ type UI struct {
 var ui UI
 
 func initUI() {
-	base := filepath.Join("asset valide", "Free-GUI-for-Cyberpunk-Pixel-Art1")
+	base := assetPath("Free-GUI-for-Cyberpunk-Pixel-Art1")
 
 	ui.font = rl.LoadFont(filepath.Join(base, "10 Font", "CyberpunkCraftpixPixel.otf"))
 	ui.frame = rl.LoadTexture(filepath.Join(base, "1 Frames", "FrameMap.png"))

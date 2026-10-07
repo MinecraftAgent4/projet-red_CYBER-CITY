@@ -17,7 +17,7 @@ type WorldArt struct {
 var worldArt WorldArt
 
 func initWorldArt() {
-	root := "asset valide"
+	root := assetRoot()
 	bgRoot := filepath.Join(root, "Power-Station-Free-Tileset-Pixel-Art", "2 Background", "Night")
 	overlayRoot := filepath.Join(root, "free-cyberpunk-overlay-effects-for-platformer-game", "Overlay")
 	tileRoot := filepath.Join(root, "Power-Station-Free-Tileset-Pixel-Art", "1 Tiles")
