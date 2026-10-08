@@ -339,5 +339,5 @@ func openGang(perso *Character) {
 }
 
 func main() {
-	Cli()
+	game()
 }
